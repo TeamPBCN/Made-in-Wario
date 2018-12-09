@@ -1,0 +1,17 @@
+Since there is a file path list in the patch RomFS(patch:/Data/FilePathListPatch.dat) for 
+controling which files are enable for using in the patch to replace the same one in the orign RomFS, 
+it is impossible to do the place-&-play file replacement stuff. This means you CANNOT just 
+archiving files into the patch RomFS for the game program to automatically override the 
+orign RomFS files like many other games.
+
+Of course, we can do some researches on this file list format(FilePathListPatch.dat), and re-generate a new 
+one which contains the file list which we want to put in the patch follow the same format. But 
+this is only work for this one game. Because different developer may uses different solutions. 
+So this solution is just wasting time, in my opinion.
+
+We can also use LayeredFS function which is embeded into Luma3DS now. But the fact is, not every 
+users are using Luma. And dispatching a lot of files as a localization patch is not convenience.
+
+Is there a more universual way to do this job? Fortunately, the answer is YES. Since the vast majority 
+of developers are using ctr_sdk libraries to develop their games, the I/O functions are same 
+in these games. So we can just do some hooks on the library functions to achieve our goal.
