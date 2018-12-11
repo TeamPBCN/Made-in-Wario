@@ -48,7 +48,7 @@ namespace Ruby_Tool
 
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Control && e.KeyCode== Keys.C)
+            if (e.Control && e.KeyCode == Keys.C)
             {
                 CopyTextOutput();
             }
@@ -72,7 +72,7 @@ namespace Ruby_Tool
                 LblInfo.ForeColor = System.Drawing.Color.Black;
                 LblInfo.Text = "复制到剪切板成功";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LblInfo.ForeColor = System.Drawing.Color.Red;
                 LblInfo.Text = "复制到剪切板失败";
@@ -87,13 +87,13 @@ namespace Ruby_Tool
             binaryWriter.Write((short)curEncoding.GetByteCount(TBText.Text));
             binaryWriter.Write((short)curEncoding.GetByteCount(TBRuby.Text));
             binaryWriter.Write(curEncoding.GetBytes(TBRuby.Text));
-            
+
             var data = BitConverter.ToString(memoryStream.ToArray()).Replace("-", "");
             var result = TBFmt.Text
                 .Replace("{class}", TBClassName.Text)
                 .Replace("{group}", TBGroupName.Text)
                 .Replace("{data}", data);
-            return result;
+            return result + TBText.Text;
         }
 
         private void BtnExchange_Click(object sender, EventArgs e)
