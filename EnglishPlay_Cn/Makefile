@@ -27,7 +27,11 @@ OBJS = engplaycn.o head.o
 #
 # define build targets
 #
-all: char_table.h payload.bin
+all: payload.bin
+
+
+prepare: char_table.h 
+	python ../sarc/sarc.py -xvf Lyt.arc
 
 
 clean:
@@ -51,4 +55,4 @@ char_table.h: chars.txt
 	python ./gen_char_table.py DrawAll $<
 
 chars.txt: ./Data/Words.txt
-	python ../../Tools/xlltgen.py -f $^ -x $@
+	python ../xlltgen/xlltgen.py -f $^ -x $@
