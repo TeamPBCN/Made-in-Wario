@@ -1,0 +1,6 @@
+[submodule "xlltgen"]
+	path = xlltgen
+	url = https://github.com/TeamPBCN/xlltgen.git
+[submodule "sarc"]
+	path = sarc
+	url = https://github.com/LITTOMA/sarc.git
